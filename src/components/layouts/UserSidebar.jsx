@@ -38,6 +38,12 @@ export const UserSidebar = () => {
                     <p>File Report</p>
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link to='/user/myReports' className="nav-link">
+                    <i className="nav-icon bi bi-heart" />
+                    <p>View Reports</p>
+                  </Link>
+                </li>
               </ul>
             </nav>
           </aside>
