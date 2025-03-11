@@ -1,6 +1,7 @@
 import React from 'react'
 import { UserNavbar } from './UserNavbar'
 import { Link, Outlet } from 'react-router-dom'
+import { UserDashboard } from '../user/UserDashboard'
 
 export const UserSidebar = () => {
   return (
@@ -8,6 +9,7 @@ export const UserSidebar = () => {
       <body className="layout-fixed sidebar-expand-lg bg-body-tertiary sidebar-open app-loaded">
         <div className='app-wrapper'>
           <UserNavbar/>
+          {/* <UserDashboard/> */}
           <aside className="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
             <div className="sidebar-brand">
               <Link to="/" className="brand-link">
@@ -28,6 +30,12 @@ export const UserSidebar = () => {
                   <Link to='/user/habit' className="nav-link">
                     <i className="nav-icon bi bi-heart" />
                     <p>Track Habits</p>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to='/user/report' className="nav-link">
+                    <i className="nav-icon bi bi-heart" />
+                    <p>File Report</p>
                   </Link>
                 </li>
               </ul>

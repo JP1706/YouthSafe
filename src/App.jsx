@@ -14,6 +14,7 @@ import { AddQuery } from './components/user/AddQuery'
 import axios from 'axios'
 import PrivateRoutes from './hooks/PrivateRoutes'
 import { About } from './components/common/About'
+import { AddReport } from './components/user/AddReport'
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route path='/user' element={<UserSidebar/>}>
             <Route path='habit' element={<AddHabit/>}></Route>
             <Route path='query' element={<AddQuery/>}></Route>
+            <Route path='report' element={<AddReport/>}></Route>
           </Route>
           </Route>
           <Route path='/admin' element={<AdminSidebar/>}>
