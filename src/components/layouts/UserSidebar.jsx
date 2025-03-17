@@ -44,6 +44,12 @@ export const UserSidebar = () => {
                     <p>View Reports</p>
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link to={`/user/updateHabit/${localStorage.getItem("id")}`} className="nav-link">
+                    <i className="nav-icon bi bi-heart" />
+                    <p>Update Habits</p>
+                  </Link>
+                </li>
               </ul>
             </nav>
           </aside>

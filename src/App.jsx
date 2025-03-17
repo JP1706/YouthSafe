@@ -16,6 +16,7 @@ import PrivateRoutes from './hooks/PrivateRoutes'
 import { About } from './components/common/About'
 import { AddReport } from './components/user/AddReport'
 import { ViewReports } from './components/user/ViewReports'
+import { UpdateHabit } from './components/user/UpdateHabit'
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
             <Route path='query' element={<AddQuery/>}></Route>
             <Route path='report' element={<AddReport/>}></Route>
             <Route path='myReports' element={<ViewReports/>}></Route>
+            <Route path='updateHabit/:id' element={<UpdateHabit/>}></Route>
           </Route>
           </Route>
           <Route path='/admin' element={<AdminSidebar/>}>
