@@ -37,7 +37,7 @@ export const AddQuery = () => {
     }
   }
   return (
-    <div className="register-page bg-dark d-flex align-items-center justify-content-center">
+    <div className="container-fluid register-page bg-dark">
       <ToastContainer position="top-center" autoClose={2000} hideProgressBar theme="dark" transition={Bounce} />
       <div className="register-box w-50 p-4">
         <div className="card bg-dark text-light border-primary-subtle card-primary p-4">
