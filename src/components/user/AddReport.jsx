@@ -37,9 +37,7 @@ export const AddReport = () => {
             }
         }
         catch (err) {
-            res.status(500).json({
-                message: err.message
-            })
+                console.log(err)
         }
 
 
@@ -69,7 +67,7 @@ export const AddReport = () => {
                                 <select className="form-control form-control-lg text-primary" required {...register("incidentType")}>
                                     <option value="" disabled selected>Select Incident Type</option>
                                     <option value="Harassment">Harassment</option>
-                                    <option value="Cyberbullying">Cyberbullying</option>
+                                    <option value="CyberBullying">Cyberbullying</option>
                                     <option value="Violence">Violence</option>
                                     <option value="Discrimination">Discrimination</option>
                                 </select>
