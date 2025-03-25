@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect} from 'react'
 import './assets/css/adminlte.css'
 import './assets/css/adminlte.min.css'
 import { UserSidebar } from './components/layouts/UserSidebar'
@@ -17,6 +15,8 @@ import { About } from './components/common/About'
 import { AddReport } from './components/user/AddReport'
 import { ViewReports } from './components/user/ViewReports'
 import { UpdateHabit } from './components/user/UpdateHabit'
+import { DisplayAllUsers } from './components/admin/DisplayAllUsers'
+import { ResetPassword } from './components/common/ResetPassword'
 
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/") {
+    if (location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/" || location.pathname.startsWith("/resetPassword/")) {
       document.body.className = ""; // Remove the unwanted class for login and signup
     } else {
       document.body.className =
@@ -35,29 +35,31 @@ function App() {
   return (
 
     <div className={
-      location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/"
+      location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/" || location.pathname.startsWith("/resetPassword/")
         ? ""
         : "app-wrapper"
     }>
-        <Routes>
-          {/* Public Routes */}
-          <Route path='/' element={<HomePage/>}></Route>
-          <Route path='/login' element={<LoginPage/>}></Route>
-          <Route path='/signup' element={<SignUpPage/>}></Route>
-          <Route path='/about' element={<About/>}></Route>
-          {/* Private Routes */}
-          <Route element={<PrivateRoutes/>}>
-          <Route path='/user' element={<UserSidebar/>}>
-            <Route path='habit' element={<AddHabit/>}></Route>
-            <Route path='query' element={<AddQuery/>}></Route>
-            <Route path='report' element={<AddReport/>}></Route>
-            <Route path='myReports' element={<ViewReports/>}></Route>
-            <Route path='updateHabit/:id' element={<UpdateHabit/>}></Route>
+      <Routes>
+        {/* Public Routes */}
+        <Route path='/' element={<HomePage />}></Route>
+        <Route path='/login' element={<LoginPage />}></Route>
+        <Route path='/signup' element={<SignUpPage />}></Route>
+        <Route path='/about' element={<About />}></Route>
+        <Route path='/resetPassword/:token' element={<ResetPassword/>}></Route>
+        {/* Private Routes */}
+        <Route element={<PrivateRoutes />}>
+          <Route path='/user' element={<UserSidebar />}>
+            <Route path='habit' element={<AddHabit />}></Route>
+            <Route path='query' element={<AddQuery />}></Route>
+            <Route path='report' element={<AddReport />}></Route>
+            <Route path='myReports' element={<ViewReports />}></Route>
+            <Route path='updateHabit/:id' element={<UpdateHabit />}></Route>
           </Route>
-          </Route>
-          <Route path='/admin' element={<AdminSidebar/>}>
-          </Route>
-        </Routes>
+        </Route>
+        <Route path='/admin' element={<AdminSidebar />}>
+          <Route path='displayUsers' element={<DisplayAllUsers/>}/>
+        </Route>
+      </Routes>
     </div>
   )
 }
