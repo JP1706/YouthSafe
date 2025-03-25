@@ -18,7 +18,7 @@ export const ResetPassword = () => {
       console.log(res.data.data)
   }
   return (
-    <div className="login-page bg-dark">
+    <div className="reset-Password bg-dark">
       {/* <ToastContainer position="top-center" autoClose={2000} hideProgressBar theme="dark" transition={Bounce} /> */}
 
       <div className="container">

@@ -70,7 +70,7 @@ export const LoginPage = () => {
                   </div>
                 </form>
                 <p className="mt-3 text-center">
-                  <Link to="" className="text-info">Forgot password?</Link>
+                  <Link to="/forgotPassword" className="text-info">Forgot password?</Link>
                 </p>
                 <p className="text-center">
                   Don't have an account? <Link to="/signup" className="text-info">Sign Up</Link>

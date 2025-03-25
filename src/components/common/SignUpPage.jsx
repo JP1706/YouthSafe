@@ -67,9 +67,9 @@ export const SignUpPage = () => {
           transition={Bounce}
       />
       <div className="register-box w-50">
-        <div className="card bg-dark text-light border-primary-subtle card-primary">
+        <div className="card bg-dark text-light border-primary-subtle card-primary p-3">
           <div className="card-header text-center">
-            <h3>Registration Form</h3>
+            <h3 className='fw-bold text-uppercase text-info'>Registration Form</h3>
           </div>
           <div className="card-body bg-dark text-light register-card-body">
             <form onSubmit={handleSubmit(submitHandler)}>

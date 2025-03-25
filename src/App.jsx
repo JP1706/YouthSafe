@@ -1,4 +1,4 @@
-import { useEffect} from 'react'
+import { useEffect } from 'react'
 import './assets/css/adminlte.css'
 import './assets/css/adminlte.min.css'
 import { UserSidebar } from './components/layouts/UserSidebar'
@@ -17,6 +17,7 @@ import { ViewReports } from './components/user/ViewReports'
 import { UpdateHabit } from './components/user/UpdateHabit'
 import { DisplayAllUsers } from './components/admin/DisplayAllUsers'
 import { ResetPassword } from './components/common/ResetPassword'
+import { ForgotPassword } from './components/common/ForgotPassword'
 
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/" || location.pathname.startsWith("/resetPassword/")) {
+    if (location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/" || location.pathname.startsWith("/resetPassword/") || location.pathname === "/forgotPassword") {
       document.body.className = ""; // Remove the unwanted class for login and signup
     } else {
       document.body.className =
@@ -35,7 +36,7 @@ function App() {
   return (
 
     <div className={
-      location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/" || location.pathname.startsWith("/resetPassword/")
+      location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/" || location.pathname.startsWith("/resetPassword/") || location.pathname === "/forgotPassword"
         ? ""
         : "app-wrapper"
     }>
@@ -45,7 +46,8 @@ function App() {
         <Route path='/login' element={<LoginPage />}></Route>
         <Route path='/signup' element={<SignUpPage />}></Route>
         <Route path='/about' element={<About />}></Route>
-        <Route path='/resetPassword/:token' element={<ResetPassword/>}></Route>
+        <Route path='/resetPassword/:token' element={<ResetPassword />}></Route>
+        <Route path='/forgotPassword' element={<ForgotPassword/>}></Route>
         {/* Private Routes */}
         <Route element={<PrivateRoutes />}>
           <Route path='/user' element={<UserSidebar />}>
@@ -57,7 +59,7 @@ function App() {
           </Route>
         </Route>
         <Route path='/admin' element={<AdminSidebar />}>
-          <Route path='displayUsers' element={<DisplayAllUsers/>}/>
+          <Route path='displayUsers' element={<DisplayAllUsers />} />
         </Route>
       </Routes>
     </div>
