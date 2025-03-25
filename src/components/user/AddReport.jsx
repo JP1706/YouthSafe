@@ -49,7 +49,7 @@ export const AddReport = () => {
             <div className="register-box w-50 p-4">
                 <div className="card bg-dark text-light border-primary-subtle card-primary p-4">
                     <div className="card-header text-center">
-                        <h3 className="text-info">Add Report</h3>
+                        <h3 className="text-info">File Report</h3>
                     </div>
                     <div className="card-body register-card-body">
                         <form onSubmit={handleSubmit(submitHandler)}>

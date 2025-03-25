@@ -208,7 +208,7 @@ export const SignUpPage = () => {
               </div>
             </form>
             <p className="mt-3 text-center">
-                  Already have an account? <Link to="/login" className="text-info">Login Here</Link>
+                  Already have an account? <Link to="/login" style={{textDecoration : "none"}} className="text-info">Login Here</Link>
             </p>
           </div>
         </div>
