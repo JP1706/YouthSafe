@@ -1,8 +1,13 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import hamburgermenu from "../../assets/images/hamburgermenu.png"
 
 export const UserNavbar = ({ toggleSidebar }) => {
+  const navigate = useNavigate()
+  const logout = () => {
+    localStorage.clear()
+    navigate("/login")
+  }
   return (
     <nav className="app-header navbar navbar-expand">
       <div className="container-fluid">
@@ -30,7 +35,7 @@ export const UserNavbar = ({ toggleSidebar }) => {
 
         <ul className="navbar-nav ms-auto">
           <li className="nav-item">
-            <button className="btn btn-danger">LOGOUT</button>
+            <button className="btn btn-danger" onClick={logout}>LOGOUT</button>
           </li>
 
         </ul>
