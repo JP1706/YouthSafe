@@ -14,7 +14,6 @@ export const UserSidebar = () => {
   return (
     <>
       <UserNavbar toggleSidebar={toggleSidebar} />
-      {/* <UserDashboard/> */}
       <aside className={`app-sidebar bg-body-secondary shadow ${isSidebarOpen ? "open" : "d-none"}`} data-bs-theme="dark">
         <div className="sidebar-brand">
           <Link to="/" className="brand-link">

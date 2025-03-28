@@ -1,17 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../../assets/css/adminlte.min.css";
 import "../../assets/css/adminlte.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export const UserDashboard = () => {
+    const userId = localStorage.getItem("id")
+    const [userProfile, setuserProfile] = useState({})
+    const [queries, setQueries] = useState([])
+    const [Reports, setReports] = useState([])
+
+    const getUserProfile = async () => {
+        const res = await axios.get("/user/" + userId)
+        setuserProfile(res.data.data)
+    }
+    
+    const getUserQueries = async () => {
+        const res = await axios.get("/getQueryById/" +userId)
+        setQueries(res.data.data)
+    }
+
+    const getUserReports = async () => {
+        const res = await axios.get("/getReportByUserId/" +userId)
+        setReports(res.data.data)
+    }
+
+
+    useEffect( () => {
+        getUserProfile(), getUserQueries(), getUserReports()
+    }, [])
     return (
         <div className="content-wrapper">
             {/* Page Header */}
             <section className="content-header">
-                <div className="container-fluid">
+                <div className="container-fluid text-center">
                     <div className="row mb-2">
-                        <div className="col-sm-6">
-                            <h1 className="text-dark">User Dashboard</h1>
+                        <div className="col-sm-6 offset-sm-3">
+                            <h1 className="text-dark">Welcome {userProfile.firstName}</h1>
                         </div>
                     </div>
                 </div>
@@ -25,7 +50,7 @@ export const UserDashboard = () => {
                         <div className="col-lg-3 col-6">
                             <div className="small-box bg-info">
                                 <div className="inner">
-                                    <h3>5</h3>
+                                    <h3>{queries.length}</h3>
                                     <p>Submitted Queries</p>
                                 </div>
                                 <div className="icon">
@@ -40,13 +65,13 @@ export const UserDashboard = () => {
                         <div className="col-lg-3 col-6">
                             <div className="small-box bg-success">
                                 <div className="inner">
-                                    <h3>3</h3>
+                                    <h3>{Reports.length}</h3>
                                     <p>Reports Submitted</p>
                                 </div>
                                 <div className="icon">
                                     <i className="fas fa-flag"></i>
                                 </div>
-                                <Link to="/user/reports" className="small-box-footer">
+                                <Link to="/user/myReports" className="small-box-footer">
                                     View Reports <i className="fas fa-arrow-circle-right"></i>
                                 </Link>
                             </div>

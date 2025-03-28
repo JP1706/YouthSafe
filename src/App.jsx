@@ -18,6 +18,7 @@ import { UpdateHabit } from './components/user/UpdateHabit'
 import { DisplayAllUsers } from './components/admin/DisplayAllUsers'
 import { ResetPassword } from './components/common/ResetPassword'
 import { ForgotPassword } from './components/common/ForgotPassword'
+import { UserDashboard } from './components/user/UserDashboard'
 
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/" || location.pathname.startsWith("/resetPassword/") || location.pathname === "/forgotPassword") {
+    if (location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/" || location.pathname.startsWith("/resetPassword/") || location.pathname === "/forgotPassword" || location.pathname === "/about") {
       document.body.className = ""; // Remove the unwanted class for login and signup
     } else {
       document.body.className =
@@ -36,7 +37,7 @@ function App() {
   return (
 
     <div className={
-      location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/" || location.pathname.startsWith("/resetPassword/") || location.pathname === "/forgotPassword"
+      location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/" || location.pathname.startsWith("/resetPassword/") || location.pathname === "/forgotPassword" || location.pathname === "/about"
         ? ""
         : "app-wrapper"
     }>
@@ -51,6 +52,7 @@ function App() {
         {/* Private Routes */}
         <Route element={<PrivateRoutes />}>
           <Route path='/user' element={<UserSidebar />}>
+            <Route path='dashboard' element={<UserDashboard/>}></Route>
             <Route path='habit' element={<AddHabit />}></Route>
             <Route path='query' element={<AddQuery />}></Route>
             <Route path='report' element={<AddReport />}></Route>

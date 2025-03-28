@@ -4,9 +4,10 @@ import '../../assets/css/adminlte.css'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { Bounce, toast, ToastContainer } from 'react-toastify'
+import { useParams } from 'react-router-dom'
 
 export const UpdateHabit = () => {
-    const id = req.params.id
+    const id = useParams().id
     const { register, handleSubmit, formState: { errors } } = useForm({
         defaultValues: async () => {
             const res = await axios.get("/getHabitsById/" + id)

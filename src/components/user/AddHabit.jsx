@@ -19,6 +19,8 @@ export const AddHabit = () => {
 
   const submitHandler = async (data) => {
     try{
+      const userId = localStorage.getItem("id")
+      data.userId = userId
       const res = await axios.post("/addHabit", data)
       if(res.status === 201) {
         toast.success('Habit Added Successfully', {
