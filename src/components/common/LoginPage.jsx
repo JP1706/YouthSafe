@@ -24,7 +24,7 @@ export const LoginPage = () => {
           transition: Bounce,
           onClose: () => {
             if (res.data.data.roleId.name === "Youth") {
-              navigate("/user")
+              navigate("/user/dashboard")
             }
           }
         })

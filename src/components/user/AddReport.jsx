@@ -66,7 +66,7 @@ export const AddReport = () => {
                             <div className="mb-3">
                                 <select className="form-control form-control-lg text-primary" required {...register("incidentType")}>
                                     <option value="" disabled selected>Select Incident Type</option>
-                                    <option value="Harassment">Harassment</option>
+                                    <option value="Harrasment">Harrasment</option>
                                     <option value="CyberBullying">Cyberbullying</option>
                                     <option value="Violence">Violence</option>
                                     <option value="Discrimination">Discrimination</option>
