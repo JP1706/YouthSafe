@@ -19,6 +19,9 @@ import { DisplayAllUsers } from './components/admin/DisplayAllUsers'
 import { ResetPassword } from './components/common/ResetPassword'
 import { ForgotPassword } from './components/common/ForgotPassword'
 import { UserDashboard } from './components/user/UserDashboard'
+import AdminDashboard from './components/admin/AdminDashboard'
+import { DisplayAllReports } from './components/admin/DisplayAllReports'
+import { DisplayAllHabits } from './components/admin/DisplayAllHabits'
 
 
 function App() {
@@ -60,9 +63,14 @@ function App() {
             <Route path='updateHabit/:id' element={<UpdateHabit />}></Route>
           </Route>
         </Route>
-        <Route path='/admin' element={<AdminSidebar />}>
-          <Route path='displayUsers' element={<DisplayAllUsers />} />
-        </Route>
+        {/* Private Routes for admin */}
+        {/* <Route element={<PrivateRoutes admin={true} />}> */}
+          <Route path="/admin" element={<AdminDashboard />}>
+            <Route path="users" element={<DisplayAllUsers />} />
+            <Route path="reports" element={<DisplayAllReports />} />
+            <Route path="habits" element={<DisplayAllHabits />} />
+          </Route>
+        {/* </Route> */}
       </Routes>
     </div>
   )
