@@ -11,7 +11,7 @@ export const DisplayAllHabits = () => {
   useEffect(() => {
     const fetchHabits = async () => {
       try {
-        const res = await axios.get('/admin/habits');
+        const res = await axios.get('/getAllHabits');
         setHabits(res.data.data);
       } catch (error) {
         toast.error("Error fetching habits", { position: "top-center", theme: "dark", transition: Bounce });
@@ -22,7 +22,7 @@ export const DisplayAllHabits = () => {
 
   const columns = [
     { field: 'id', headerName: 'Habit ID', width: 250 },
-    { field: 'userId', headerName: 'User ID', width: 250 },
+
     { field: 'fullName', headerName: 'User Name', width: 200 },
     { field: 'screenTime', headerName: 'Screen Time (hrs)', width: 180 },
     { field: 'sleepHours', headerName: 'Sleep Hours', width: 160 },
@@ -33,7 +33,6 @@ export const DisplayAllHabits = () => {
 
   const rows = habits.map(habit => ({
     id: habit._id,
-    userId: habit.userId,
     fullName: habit.fullName,
     screenTime: habit.screenTime,
     sleepHours: habit.sleepHours,
@@ -43,9 +42,9 @@ export const DisplayAllHabits = () => {
   }));
 
   return (
-    <div className="bg-dark text-light p-4">
+    <div className="text-light p-4">
       <h2>Track Habits</h2>
-      <div style={{ height: 400, width: '100%' }}>
+      <div style={{ height: 400, width: '100%' }} className='text-light'>
          <DataGrid rows={rows} columns={columns} pageSize={5} rowsPerPageOptions={[5]} disableSelectionOnClick />
       </div>
       <ToastContainer position="top-center" autoClose={2000} hideProgressBar theme="dark" transition={Bounce} />

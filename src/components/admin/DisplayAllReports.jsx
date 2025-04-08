@@ -11,7 +11,7 @@ export const DisplayAllReports = () => {
   useEffect(() => {
     const fetchReports = async () => {
       try {
-        const res = await axios.get('/admin/reports');
+        const res = await axios.get('getAllReports');
         setReports(res.data.data);
       } catch (error) {
         toast.error("Error fetching reports", { position: "top-center", theme: "dark", transition: Bounce });
@@ -39,7 +39,7 @@ export const DisplayAllReports = () => {
   }));
 
   return (
-    <div className="bg-dark text-light p-4">
+    <div className="p-4">
       <h2>Review Reports</h2>
       <div style={{ height: 400, width: '100%' }}>
          <DataGrid rows={rows} columns={columns} pageSize={5} rowsPerPageOptions={[5]} disableSelectionOnClick />

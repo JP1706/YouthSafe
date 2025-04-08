@@ -51,7 +51,7 @@ export const DisplayAllUsers = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get('/admin/users');
+        const res = await axios.get('/getUser');
         setUsers(res.data.data);
       } catch (error) {
         toast.error("Error fetching users", { position: "top-center", theme: "dark", transition: Bounce });
@@ -78,7 +78,7 @@ export const DisplayAllUsers = () => {
   }));
 
   return (
-    <div className="bg-dark text-light p-4">
+    <div className=" p-4">
       <h2>Manage Users</h2>
       <div style={{ height: 400, width: '100%' }}>
         <DataGrid rows={rows} columns={columns} pageSize={5} rowsPerPageOptions={[5]} disableSelectionOnClick />
