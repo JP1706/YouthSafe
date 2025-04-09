@@ -21,8 +21,16 @@ import { ForgotPassword } from './components/common/ForgotPassword'
 import { UserDashboard } from './components/user/UserDashboard'
 import { DisplayAllReports } from './components/admin/DisplayAllReports'
 import { DisplayAllHabits } from './components/admin/DisplayAllHabits'
-import {AdminDashboard} from './components/admin/AdminDashboard'
+import { AdminDashboard } from './components/admin/AdminDashboard'
 import { AdminLogin } from './components/admin/AdminLogin'
+import { CounselorSidebar } from './components/Counselor/CounselorSidebar'
+import { CounselorDashboard } from './components/Counselor/CounselorDashboard'
+import { CounselorViewReports } from './components/Counselor/CounselorViewReports'
+
+import { CounselorViewAllHabits } from './components/Counselor/CounselorViewAllHabits'
+import { CounselorViewAllQueries } from './components/Counselor/CounselorViewAllQueries'
+import { FeedbackForm } from './components/Counselor/FeedBackForm'
+
 
 
 function App() {
@@ -53,6 +61,7 @@ function App() {
         <Route path='/about' element={<About />}></Route>
         <Route path='/resetPassword/:token' element={<ResetPassword />}></Route>
         <Route path='/forgotPassword' element={<ForgotPassword />}></Route>
+        <Route path='/adminlogin' element={<AdminLogin />}></Route>
         {/* Private Routes */}
         <Route element={<PrivateRoutes />}>
           <Route path='/user' element={<UserSidebar />}>
@@ -64,12 +73,20 @@ function App() {
             <Route path='updateHabit/:id' element={<UpdateHabit />}></Route>
           </Route>
         </Route>
-        <Route path='/adminlogin' element={<AdminLogin/>}></Route>
         <Route path="/admin" element={<AdminSidebar />}>
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="users" element={<DisplayAllUsers />} />
           <Route path="reports" element={<DisplayAllReports />} />
           <Route path="habits" element={<DisplayAllHabits />} />
+        </Route>
+
+        <Route path='/counselor' element={<CounselorSidebar />}>
+          <Route path='dashboard' element={<CounselorDashboard />} />
+          <Route path='report' element={<CounselorViewReports/>}/>
+          <Route path='query' element={<CounselorViewAllQueries/>}/>
+          <Route path='habit' element={<CounselorViewAllHabits/>}/>
+          <Route path="feedback/:type/:id" element={<FeedbackForm />} />
+
         </Route>
       </Routes>
     </div>
