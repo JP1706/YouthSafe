@@ -17,13 +17,24 @@ const useAuth = () => {
     return {...authState, isLoading}
 }
 
-const PrivateRoutes = () => {
-    const auth = useAuth()
+const PrivateRoutes = ({ role }) => {
+  const auth = useAuth();
 
-    if(auth.isLoading == true) {
-        return <h1>Loading.../</h1>
-    }
-    return auth.isLoggedin == true ? <Outlet/> : <Navigate to='/login'/>
-}
+  if (auth.isLoading) {
+    return <h1>Loading...</h1>;
+  }
+
+  if (!auth.isLoggedin) {
+    return <Navigate to="/login" />;
+  }
+
+  // Role-based protection
+  if (role && auth.role !== role) {
+    localStorage.clear();
+    return <Navigate to="/login" />;
+  }
+
+  return <Outlet />;
+};
 
 export default PrivateRoutes

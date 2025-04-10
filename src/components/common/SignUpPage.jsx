@@ -189,8 +189,6 @@ export const SignUpPage = () => {
                     <select className="form-control form-control-lg text-primary" {...register("roleId", validationSchema.requiredValidator)}>
                       <option value="" disabled selected>Choose Role</option>
                       <option value="67c315daa6a476c150fc2b1a">Youth</option>
-                      <option value="67c315eea6a476c150fc2b1c">Parents</option>
-                      <option value="67c3161fa6a476c150fc2b20">Teachers</option>
                       <option value="67c31601a6a476c150fc2b1e">Counselors</option>
                     </select>
                     <span style={{ color: "red" }}>{errors.roleId?.message}</span>

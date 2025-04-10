@@ -26,12 +26,14 @@ import { AdminLogin } from './components/admin/AdminLogin'
 import { CounselorSidebar } from './components/Counselor/CounselorSidebar'
 import { CounselorDashboard } from './components/Counselor/CounselorDashboard'
 import { CounselorViewReports } from './components/Counselor/CounselorViewReports'
-
 import { CounselorViewAllHabits } from './components/Counselor/CounselorViewAllHabits'
 import { CounselorViewAllQueries } from './components/Counselor/CounselorViewAllQueries'
-import { FeedbackForm } from './components/Counselor/FeedBackForm'
-
-
+import { ReportFeedbackForm } from './components/Counselor/ReportFeedbackForm'
+import { ManageFeedbacks } from './components/Counselor/ManageFeedbacks'
+import ViewQueries from './components/user/ViewQueries'
+import { UserFeedbackPanel } from './components/user/UserFeedbackPanel'
+import { QueryFeedbackForm } from './components/Counselor/QueryFeedbackForm'
+import { HabitFeedbackForm } from './components/Counselor/HabitFeedbackForm'
 
 function App() {
   axios.defaults.baseURL = 'http://localhost:3000'
@@ -47,7 +49,6 @@ function App() {
   }, [location.pathname]);
 
   return (
-
     <div className={
       location.pathname === "/login" || location.pathname === "/adminlogin" || location.pathname === "/signup" || location.pathname === "/" || location.pathname.startsWith("/resetPassword/") || location.pathname === "/forgotPassword" || location.pathname === "/about"
         ? ""
@@ -62,31 +63,41 @@ function App() {
         <Route path='/resetPassword/:token' element={<ResetPassword />}></Route>
         <Route path='/forgotPassword' element={<ForgotPassword />}></Route>
         <Route path='/adminlogin' element={<AdminLogin />}></Route>
+        
         {/* Private Routes */}
-        <Route element={<PrivateRoutes />}>
+        <Route element={<PrivateRoutes role="Youth" />}>
           <Route path='/user' element={<UserSidebar />}>
-            <Route path='dashboard' element={<UserDashboard />}></Route>
-            <Route path='habit' element={<AddHabit />}></Route>
-            <Route path='query' element={<AddQuery />}></Route>
-            <Route path='report' element={<AddReport />}></Route>
-            <Route path='myReports' element={<ViewReports />}></Route>
-            <Route path='updateHabit/:id' element={<UpdateHabit />}></Route>
+            <Route path='dashboard' element={<UserDashboard />} />
+            <Route path='habit' element={<AddHabit />} />
+            <Route path='query' element={<AddQuery />} />
+            <Route path='report' element={<AddReport />} />
+            <Route path='myReports' element={<ViewReports />} />
+            <Route path='updateHabit/:id' element={<UpdateHabit />} />
+            <Route path='feedbacks' element={<UserFeedbackPanel />} />
+            <Route path="/user/queries" element={<ViewQueries />} />
           </Route>
         </Route>
-        <Route path="/admin" element={<AdminSidebar />}>
-          <Route path="dashboard" element={<AdminDashboard />} />
-          <Route path="users" element={<DisplayAllUsers />} />
-          <Route path="reports" element={<DisplayAllReports />} />
-          <Route path="habits" element={<DisplayAllHabits />} />
+
+        <Route element={<PrivateRoutes role="Admin" />}>
+          <Route path="/admin" element={<AdminSidebar />}>
+            <Route path="dashboard" element={<AdminDashboard />} />
+            <Route path="users" element={<DisplayAllUsers />} />
+            <Route path="reports" element={<DisplayAllReports />} />
+            <Route path="habits" element={<DisplayAllHabits />} />
+          </Route>
         </Route>
 
-        <Route path='/counselor' element={<CounselorSidebar />}>
-          <Route path='dashboard' element={<CounselorDashboard />} />
-          <Route path='report' element={<CounselorViewReports/>}/>
-          <Route path='query' element={<CounselorViewAllQueries/>}/>
-          <Route path='habit' element={<CounselorViewAllHabits/>}/>
-          <Route path="feedback/:type/:id" element={<FeedbackForm />} />
-
+        <Route element={<PrivateRoutes role="Counselor" />}>
+          <Route path='/counselor' element={<CounselorSidebar />}>
+            <Route path='dashboard' element={<CounselorDashboard />} />
+            <Route path='report' element={<CounselorViewReports />} />
+            <Route path='query' element={<CounselorViewAllQueries />} />
+            <Route path='habit' element={<CounselorViewAllHabits />} />
+            <Route path="feedback/habit/:habitId" element={<HabitFeedbackForm />} />
+            <Route path="feedback/query/:queryId" element={<QueryFeedbackForm />} />
+            <Route path="feedback/report/:reportId" element={<ReportFeedbackForm />} />
+            <Route path="manage-feedbacks" element={<ManageFeedbacks />} />
+          </Route>
         </Route>
       </Routes>
     </div>

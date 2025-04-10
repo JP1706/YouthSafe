@@ -26,7 +26,7 @@ export const UpdateHabit = () => {
 
     const submitHandler = async (data) => {
         try {
-            data.userID = localStorage.getItem("id")
+            data.userId = localStorage.getItem("id")
             delete data._id
             const res = await axios.put("/updateHabits/"+id, data)
             if (res.status === 201) {

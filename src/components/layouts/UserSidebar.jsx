@@ -54,6 +54,18 @@ export const UserSidebar = () => {
                 <p>Update Habits</p>
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to='/user/feedbacks' className="nav-link">
+                <i className="nav-icon bi bi-chat-dots" />
+                <p>View Feedbacks</p>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to='/user/queries' className="nav-link">
+                <i className="nav-icon bi bi-question-lg" />
+                <p>View Queries</p>
+              </Link>
+            </li>
           </ul>
         </nav>
       </aside>

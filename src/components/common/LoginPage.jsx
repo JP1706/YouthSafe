@@ -25,6 +25,10 @@ export const LoginPage = () => {
           onClose: () => {
             if (res.data.data.roleId.name === "Youth") {
               navigate("/user/dashboard")
+            } else if (res.data.data.roleId.name === "Counselor") {
+              navigate("/counselor/dashboard")
+            } else if (res.data.data.roleId.name === "Admin") {
+              navigate("/admin/dashboard")
             }
           }
         })
